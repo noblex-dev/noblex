@@ -27,12 +27,6 @@ jobs:
 
       - name: Bump patch version
         run: |
-          COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
-          if echo "$COMMIT_MESSAGE" | grep -iq 'minor'; then
-            npm version minor --no-git-tag-version
-          else
-            npm version patch --no-git-tag-version
-          fi
           npm version patch --no-git-tag-version
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

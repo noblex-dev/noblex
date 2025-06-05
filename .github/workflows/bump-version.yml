@@ -5,14 +5,21 @@ on:
     branches:
       - develop
 
-permissions:
-  contents: write  # Needed to allow pushing changes back
-
 jobs:
   bump-version:
     runs-on: self-hosted
 
     steps:
+      - name: Determine version bump type
+        id: version
+        run: |
+          COMMIT_MSG="${{ github.event.head_commit.message }}"
+          if [[ "$COMMIT_MSG" == *"[minor]"* ]]; then
+            echo "type=minor" >> $GITHUB_OUTPUT
+          else
+            echo "type=patch" >> $GITHUB_OUTPUT
+          fi
+
       - name: Bump version
         run: |
-          echo "Test"
+          echo "Version: ${{ steps.version.outputs.type }}"

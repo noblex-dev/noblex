@@ -2,9 +2,11 @@
   "name": "noblex",
   "version": "0.0.2",
   "description": "test",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node esbuild.config.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/noblex-dev/noblex/issues"
   },
-  "homepage": "https://github.com/noblex-dev/noblex#readme"
+  "homepage": "https://github.com/noblex-dev/noblex#readme",
+  "devDependencies": {
+    "esbuild": "^0.25.5"
+  }
 }

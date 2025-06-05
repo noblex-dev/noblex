@@ -11,21 +11,15 @@ permissions:
 
 jobs:
   bump-version:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Important if you want to access full git history
 
-      - name: Check for [skip ci] commit message
-        id: check_skip
-        run: |
-          echo "Commit message: ${{ github.event.head_commit.message }}"
-          if echo "${{ github.event.head_commit.message }}" | grep -iq '\[skip ci\]'; then
-            echo "Skipping workflow because commit message contains [skip ci]"
-            exit 78  # special exit code to tell GitHub to neutralize the workflow (neutral)
-          fi
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:

@@ -7,6 +7,7 @@ on:
 
 jobs:
   bump-version:
+    if: "!contains(github.event.head_commit.message, 'skipci')"
     runs-on: self-hosted
 
     steps:
@@ -22,4 +23,9 @@ jobs:
 
       - name: Bump version
         run: |
-          echo "Version: ${{ steps.version.outputs.type }}"
+          npm version ${{ steps.version.outputs.type }} --no-git-tag-version
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: bump ${{ steps.version.outputs.type }} version on develop skipci"
+          git push origin develop

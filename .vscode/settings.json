@@ -1,0 +1,14 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.wordWrap": "on",
+  "[handlebars]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false
+  },
+  "search.exclude": {
+    "**/swagger": true
+  }
+}

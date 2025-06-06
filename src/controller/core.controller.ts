@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction, CookieOptions } from "express";
-
+import type { Result } from "src/types.ts";
 export const controller = (method: (req: Request) => Promise<Result>) => {
   return async (
     req: Request,

@@ -1,0 +1,39 @@
+name: Bump version on develop merge
+
+on:
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: write 
+  
+jobs:
+  bump-version:
+    if: "!contains(github.event.head_commit.message, 'skipci')"
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine version bump type
+        id: version
+        run: |
+          COMMIT_MSG="${{ github.event.head_commit.message }}"
+          if [[ "$COMMIT_MSG" == *"[minor]"* ]]; then
+            echo "type=minor" >> $GITHUB_OUTPUT
+          else
+            echo "type=patch" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Bump version
+        run: |
+          npm version ${{ steps.version.outputs.type }} --no-git-tag-version
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: bump ${{ steps.version.outputs.type }} version on develop skipci"
+          git push origin develop

@@ -29,6 +29,7 @@ jobs:
             \"name\": \"noblex\",
             \"version\": \"$VERSION\",
             \"main\": \"index.cjs\",
+            \"types\": \"index.d.ts\",
             \"files\": [\"index.cjs\"],
             \"license\": \"MIT\",
             \"dependencies\": {}

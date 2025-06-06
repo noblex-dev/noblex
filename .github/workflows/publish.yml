@@ -23,7 +23,8 @@ jobs:
         run: |
           mkdir temp
           cp dist/index.cjs temp/index.cjs
-          cp src/index.d.ts temp/index.d.ts
+          cp index.d.ts dist/index.d.ts
+          cp index.d.ts temp/index.d.ts
           VERSION=$(node -p "require('./package.json').version")
           echo "{
             \"name\": \"noblex\",

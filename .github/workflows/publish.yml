@@ -30,7 +30,7 @@ jobs:
             \"version\": \"$VERSION\",
             \"main\": \"index.cjs\",
             \"types\": \"index.d.ts\",
-            \"files\": [\"index.cjs\"],
+            \"files\": [\"index.cjs\", \"index.d.ts\"],
             \"license\": \"MIT\",
             \"dependencies\": {}
           }" > temp/package.json

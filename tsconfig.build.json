@@ -1,0 +1,12 @@
+// {
+//   "extends": "./tsconfig.json",
+//   "compilerOptions": {
+//     "declaration": true,
+//     "emitDeclarationOnly": true,
+//     "outDir": "./build",
+//     "rootDir": "./src",
+//     "noEmit": false,
+//     "allowImportingTsExtensions": false // remove or set to false here
+//   },
+//   "include": ["src"]
+// }

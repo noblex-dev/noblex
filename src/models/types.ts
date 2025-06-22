@@ -1,0 +1,15 @@
+export type MongooseHook =
+  | "validate"
+  | "save"
+  | "updateOne"
+  | "deleteOne"
+  | "find"
+  | "findOne"
+  | "findOneAndUpdate"
+  | "findOneAndDelete"
+  | "updateMany"
+  | "deleteMany"
+  | "countDocuments"
+  | "estimatedDocumentCount"
+  | "replaceOne"
+  | "findOneAndReplace";
